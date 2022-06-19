@@ -27,6 +27,7 @@
     "date-fns": "^2.25.0",
     "formik": "^2.1.5",
     "history": "^5.0.0",
+    "install-peerdeps": "^3.0.3",
     "next": "^12.0.3-canary.7",
     "next-auth": "^4.3.4",
     "nprogress": "^0.2.0",
