@@ -39,7 +39,7 @@ const Login = () => {
         formik.resetForm();
         localStorage.setItem("token", res.data.token);
         localStorage.setItem("user", JSON.stringify(res.data.usuario));
-        dispatch(setUser({ token: res.data.token, user: res.data.user }));
+        dispatch(setUser({ token: res.data.token, user: res.data.usuario }));
         MySwal.fire("Login exitoso!", `Bienvenidos a NOVA!.`, "success").then(() => {
           switch (res.data.usuario.rol) {
             case "USER_ROLE":

@@ -13,7 +13,6 @@ import { useSession } from "next-auth/react";
 
 const Dashboard = () => {
   const { session, loadingSession } = useSession();
-  console.log('session', session);
   return (
     <>
       <Head>
