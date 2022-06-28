@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { insuranceApi } from '../store/apis'
 
 const initialState = {
   companies: [],

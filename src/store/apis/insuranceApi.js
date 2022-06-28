@@ -7,22 +7,26 @@ export const insuranceApi = createApi({
     baseQuery: fetchBaseQuery({
         baseUrl: 'http://localhost:8080/api',
         prepareHeaders: (headers ) => {
-            headers.set('autorization', localStorage.getItem('token') ?? '');
+            headers.set('Authorization', localStorage.getItem('token') ?? '');
             return headers;
         }
     }),
+    tagTypes: ['Insurance'],
     endpoints: (builder) => ({
         getInsurances: builder.query({
             query: () => '/aseguradoras',
+            providesTags: ['Insurance'],
         }),
         addInsurance: builder.mutation({
-            query: (data) => ({
+            query: (body) => ({
                 url: '/aseguradoras',
                 method: 'POST',
+                body,
             }),
+            invalidatesTags: ['Insurance'],
         }),
     }),
 });
 
 
-export const { useGetInsurancesQuery } = insuranceApi;
+export const { useGetInsurancesQuery, useAddInsuranceMutation } = insuranceApi;

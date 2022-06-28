@@ -1,4 +1,4 @@
-import { useSelector, useDispatch } from "react-redux";
+import { useState } from "react";
 import { v4 as uuid } from "uuid";
 import PerfectScrollbar from "react-perfect-scrollbar";
 import {
@@ -20,11 +20,16 @@ import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import { useGetInsurancesQuery } from "src/store/apis";
 import { Loading } from "../shared/loading/Loading";
+import CreateInsuranceModal from "./CreateInsuranceModal";
 
 const Insurance = ({ router, openedit }) => {
 
   const { data: insurances = [], isLoading } = useGetInsurancesQuery();
-  console.log(insurances.aseguradoras);
+  const [open, setOpen] = useState(false);
+
+  const handleOpen = () => {
+    setOpen(!open);
+  }
   
   const pageLoader = () => {
     return (
@@ -56,9 +61,7 @@ const Insurance = ({ router, openedit }) => {
                 size="large"
                 variant="text"
                 style={{ float: "right", margin: "1%" }}
-                onClick={() => {
-                  router.push("/employee/createticket");
-                }}
+                onClick={handleOpen}
               >
                 Nueva Aseguradora
               </Button>
@@ -134,6 +137,7 @@ const Insurance = ({ router, openedit }) => {
                           size="small"
                           variant="text"
                           style={{ backgroundColor: "trnasparent", minWidth: "35px" }}
+                          onClick={() => {console.log(item._id)}}
                         >
                           <DeleteForeverIcon style={{ color: "blue" }} />
                         </Button>{" "}
@@ -144,6 +148,7 @@ const Insurance = ({ router, openedit }) => {
               </Table>
             </Box>
           </PerfectScrollbar>
+          <CreateInsuranceModal isopen={open} handleOpen={handleOpen} />
         </Card>
       )}
     </>

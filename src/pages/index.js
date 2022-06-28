@@ -103,7 +103,7 @@ const Login = () => {
   const formik = useFormik({
     initialValues: {
       email: "isistemas@automarcol.com",
-      password: "Automarcol+2022,.*",
+      password: "Alexander+2022,.*",
     },
     validationSchema: Yup.object({
       email: Yup.string().email("Must be a valid email").max(255).required("Email is required"),
