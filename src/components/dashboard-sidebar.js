@@ -23,6 +23,11 @@ const items = [
     title: 'Dashboard'
   },
   {
+    href: '/inventory/carInventory',
+    icon: (<ShoppingBagIcon fontSize="small" />),
+    title: 'inventarios'
+  },
+  {
     href: '/customers',
     icon: (<UsersIcon fontSize="small" />),
     title: 'Customers'

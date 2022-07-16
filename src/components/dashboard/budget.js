@@ -2,7 +2,7 @@ import { Avatar, Box, Card, CardContent, Grid, Typography } from '@mui/material'
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import MoneyIcon from '@mui/icons-material/Money';
 
-export const Budget = (props) => (
+export const Budget = ({amount, title = 'Pendientes', data, helpText=''} ,props) => (
   <Card
     sx={{ height: '100%' }}
     {...props}
@@ -18,14 +18,15 @@ export const Budget = (props) => (
             color="textSecondary"
             gutterBottom
             variant="overline"
+            style={{ fontSize: '1.1rem' }}
           >
-            PQR Pendientes
+            {title}
           </Typography>
           <Typography
             color="textPrimary"
             variant="h4"
           >
-            12
+            {amount+' '+helpText}
           </Typography>
         </Grid>
         <Grid item>
