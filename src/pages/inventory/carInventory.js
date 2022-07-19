@@ -10,6 +10,11 @@ import { useGetFotonInventoryQuery } from "src/store/apis/fotonApi";
 import { useGetPugeotInventoryQuery } from "src/store/apis/peugeotApi";
 import { useGetBajajInventoryQuery } from "src/store/apis/bajajApi";
 import { useGetFCAInventoryQuery } from "src/store/apis/fcaApi";
+import fordLogo from "../../assets/ford-logo.png";
+import fotonLogo from "../../assets/foton-logo.png";
+import peugeotLogo from "../../assets/peugeot-logo.png";
+import bajajLogo from "../../assets/bajaj-logo.png";
+import fcaLogo from "../../assets/astara-logo.png";
 
 import { DataTable } from "src/components/shared/cartable";
 
@@ -21,6 +26,8 @@ const CarInvnetory = () => {
   const { data: fcaInventory = [] } = useGetFCAInventoryQuery();
 
   const [inventory, setInventory] = React.useState(fordInventory);
+  const [currentInventory, setCurrentInventory] = React.useState('Ford');
+  const [currentLogo, setCurrentLogo] = React.useState("");
 
   let fordAmount = fordInventory.length;
   let fotonAmount = fotonInventory.length;
@@ -32,18 +39,23 @@ const CarInvnetory = () => {
     switch (brand) {
       case "ford":
         setInventory(fordInventory);
+        setCurrentInventory("Ford");
         break;
       case "foton":
         setInventory(fotonInventory);
+        setCurrentInventory("Foton");
         break;
       case "peugeot":
         setInventory(peugeotInventory);
+        setCurrentInventory("Peugeot");
         break;
       case "bajaj":
         setInventory(bajajInventory);
+        setCurrentInventory("Bajaj");
         break;
       case "fca":
         setInventory(fcaInventory);
+        setCurrentInventory("FCA");
         break;
       default:
         break;
@@ -99,9 +111,11 @@ const CarInvnetory = () => {
                   }}
                   transition={{ type: "spring", stiffness: 100, duration: 3 }}
                 >
-                  <button
+                  <motion.button
                     onClick={() => loadInventory("ford")}
-                    style={{ borderColor: "transparent" }}
+                    style={{ borderColor: "transparent", width: "95%" }}
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
                   >
                     <Budget
                       amount={fordAmount}
@@ -109,7 +123,7 @@ const CarInvnetory = () => {
                       data={fordInventory}
                       helpText={"Vehiculos"}
                     />
-                  </button>
+                  </motion.button>
                 </motion.div>
               </Grid>
               <Grid item lg={4} sm={6} xl={4} xs={12}>
@@ -120,9 +134,11 @@ const CarInvnetory = () => {
                   }}
                   transition={{ type: "spring", stiffness: 100, duration: 3 }}
                 >
-                  <button
+                  <motion.button
                     onClick={() => loadInventory("foton")}
-                    style={{ borderColor: "transparent" }}
+                    style={{ borderColor: "transparent", width: "95%" }}
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
                   >
                     <Budget
                       amount={fotonAmount}
@@ -130,7 +146,7 @@ const CarInvnetory = () => {
                       data={fotonInventory}
                       helpText={"Vehiculos"}
                     />
-                  </button>
+                  </motion.button>
                 </motion.div>
               </Grid>
               <Grid item lg={4} sm={6} xl={4} xs={12}>
@@ -141,9 +157,11 @@ const CarInvnetory = () => {
                   }}
                   transition={{ type: "spring", stiffness: 100, duration: 3 }}
                 >
-                  <button
+                  <motion.button
                     onClick={() => loadInventory("peugeot")}
-                    style={{ borderColor: "transparent" }}
+                    style={{ borderColor: "transparent", width: "95%" }}
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
                   >
                     <Budget
                       amount={peugeotAmount}
@@ -151,7 +169,7 @@ const CarInvnetory = () => {
                       data={peugeotInventory}
                       helpText={"Vehiculos"}
                     />
-                  </button>
+                  </motion.button>
                 </motion.div>
               </Grid>
               <Grid item lg={4} sm={6} xl={4} xs={12}>
@@ -162,9 +180,11 @@ const CarInvnetory = () => {
                   }}
                   transition={{ type: "spring", stiffness: 100, duration: 5 }}
                 >
-                  <button
+                  <motion.button
                     onClick={() => loadInventory("bajaj")}
-                    style={{ borderColor: "transparent" }}
+                    style={{ borderColor: "transparent", width: "95%" }}
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
                   >
                     <Budget
                       amount={bajajAmount}
@@ -173,7 +193,7 @@ const CarInvnetory = () => {
                       helpText={"Vehiculos"}
                       onClick={() => loadInventory("bajaj")}
                     />
-                  </button>
+                  </motion.button>
                 </motion.div>
               </Grid>
               <Grid
@@ -182,7 +202,7 @@ const CarInvnetory = () => {
                 sm={6}
                 xl={4}
                 xs={12}
-                sx={{ display: { xs: "none", md: "flex" } }}
+                sx={{ display: { xs: "none", md: "none", lg:'flex' } }}
               />
               <Grid item lg={4} sm={6} xl={4} xs={12}>
                 <motion.div
@@ -192,9 +212,11 @@ const CarInvnetory = () => {
                   }}
                   transition={{ type: "spring", stiffness: 100, duration: 5 }}
                 >
-                  <button
+                  <motion.button
                     onClick={() => loadInventory("fca")}
-                    style={{ borderColor: "transparent" }}
+                    style={{ borderColor: "transparent", width: "95%" }}
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
                   >
                     <Budget
                       amount={fcaAmount}
@@ -202,17 +224,33 @@ const CarInvnetory = () => {
                       data={fcaInventory}
                       helpText={"Vehiculos"}
                     />
-                  </button>
+                  </motion.button>
                 </motion.div>
               </Grid>
               <Grid item lg={12} md={12} xl={12} xs={12}>
-                {inventory.length > 0 ? (
-                  <DataTable data={inventory} title={"Lista de vehiculos Ford"} />
-                ) : (
-                  <Typography variant="h4" sx={{ mt: 5, textAlign: "center" }}>
-                    Seleccione una marca para desplegar el inventario
-                  </Typography>
-                )}
+                <motion.div
+                  animate={{
+                    y: [500, 0],
+                    opacity: 2,
+                  }}
+                  transition={{ type: "spring", stiffness: 100, duration: 5 }}
+                >
+                  {inventory.length > 0 ? (
+                    <motion.div
+                      animate={{
+                        y: [500, 0],
+                        opacity: 2,
+                      }}
+                      transition={{ type: "spring", stiffness: 100, duration: 2 }}
+                    >
+                      <DataTable data={inventory} title={"Lista de vehiculos "+currentInventory} logo={peugeotLogo} />
+                    </motion.div>
+                  ) : (
+                    <Typography variant="h4" sx={{ mt: 5, textAlign: "center" }}>
+                      Seleccione una marca para desplegar el inventario
+                    </Typography>
+                  )}
+                </motion.div>
               </Grid>
             </Grid>
           )}
