@@ -112,6 +112,36 @@ export const DataTable = ({ data, title }) => {
                     color: "#000000",
                   }}
                 >
+                  Año Modelo
+                </TableCell>
+                <TableCell
+                  style={{
+                    textAlign: "center",
+                    fontWeight: "bold",
+                    fontSize: "0.9rem",
+                    color: "#000000",
+                  }}
+                >
+                  Color
+                </TableCell>
+                <TableCell
+                  style={{
+                    textAlign: "center",
+                    fontWeight: "bold",
+                    fontSize: "0.9rem",
+                    color: "#000000",
+                  }}
+                >
+                  Ubicacion Actual
+                </TableCell>
+                <TableCell
+                  style={{
+                    textAlign: "center",
+                    fontWeight: "bold",
+                    fontSize: "0.9rem",
+                    color: "#000000",
+                  }}
+                >
                   Costo Actual
                 </TableCell>
               </TableRow>
@@ -129,6 +159,15 @@ export const DataTable = ({ data, title }) => {
                   </TableCell>
                   <TableCell sx={{ TableCellStyle }}>
                     <p style={TableLabel}>{item.Dias_En_Inventario} Días </p>
+                  </TableCell>
+                  <TableCell sx={{ TableCellStyle }}>
+                    <p style={TableLabel}>{item.Ano_Modelo} </p>
+                  </TableCell>
+                  <TableCell sx={{ TableCellStyle }}>
+                    <p style={TableLabel}>{item.ColorPintura} </p>
+                  </TableCell>
+                  <TableCell sx={{ TableCellStyle }}>
+                    <p style={TableLabel}>{item.UbicacionActual} </p>
                   </TableCell>
                   <TableCell sx={{ TableCellStyle }}>
                     {" "}
