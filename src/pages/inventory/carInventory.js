@@ -29,6 +29,8 @@ const CarInvnetory = () => {
   const [currentInventory, setCurrentInventory] = React.useState('Ford');
   const [currentLogo, setCurrentLogo] = React.useState("");
 
+  console.log(bajajInventory);
+
   let fordAmount = fordInventory.length;
   let fotonAmount = fotonInventory.length;
   let peugeotAmount = peugeotInventory.length;
@@ -122,6 +124,7 @@ const CarInvnetory = () => {
                       title={"Vehiculos FORD"}
                       data={fordInventory}
                       helpText={"Vehiculos"}
+                      logo={fordLogo}
                     />
                   </motion.button>
                 </motion.div>
@@ -145,6 +148,7 @@ const CarInvnetory = () => {
                       title={"Vehiculos FOTON"}
                       data={fotonInventory}
                       helpText={"Vehiculos"}
+                      logo={fotonLogo}
                     />
                   </motion.button>
                 </motion.div>
@@ -168,6 +172,7 @@ const CarInvnetory = () => {
                       title={"Vehiculos PEUGEOT"}
                       data={peugeotInventory}
                       helpText={"Vehiculos"}
+                      logo={peugeotLogo}
                     />
                   </motion.button>
                 </motion.div>
@@ -192,6 +197,7 @@ const CarInvnetory = () => {
                       data={bajajInventory}
                       helpText={"Vehiculos"}
                       onClick={() => loadInventory("bajaj")}
+                      logo={bajajLogo}
                     />
                   </motion.button>
                 </motion.div>
@@ -223,6 +229,7 @@ const CarInvnetory = () => {
                       title={"Vehiculos FCA"}
                       data={fcaInventory}
                       helpText={"Vehiculos"}
+                      logo={fcaLogo}
                     />
                   </motion.button>
                 </motion.div>
